@@ -5,6 +5,7 @@ import com.wgt.imt.architecture.business.common.exception.NotFoundValidationExce
 import com.wgt.imt.architecture.business.common.exception.ValidationException;
 import com.wgt.imt.architecture.interfaces.rest.common.model.output.ExceptionOutput;
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.extern.log4j.Log4j2;
 import org.apache.logging.log4j.util.Strings;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,7 @@ import java.util.Optional;
  * Il intercepte les exceptions de type ValidationException et les exceptions génériques, puis renvoie une réponse HTTP appropriée avec des informations sur l'erreur.
  * (On peut le considérer comme étant un mapper entre la couche business et la couche présentation spécifique REST)
  */
+@Log4j2
 @RestControllerAdvice
 public class ControllerExceptionHandler {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
@@ -34,6 +36,7 @@ public class ControllerExceptionHandler {
      */
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<ExceptionOutput> handleBusinessException(final HttpServletRequest request, final ValidationException exception) {
+        log.warn("Une exception de validation a été levée : {}", exception.getMessage(), exception);
         return new ResponseEntity<>(
                 ExceptionOutput.builder()
                                .type(exception.getClass().getSimpleName())
@@ -58,6 +61,7 @@ public class ControllerExceptionHandler {
      */
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionOutput> handleGenericException(final HttpServletRequest request, final Exception exception) {
+        log.error("Une exception générique a été levée : {}", exception.getMessage(), exception);
         return new ResponseEntity<>(
                 ExceptionOutput.builder()
                         .type(exception.getClass().getSimpleName())

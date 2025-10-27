@@ -36,3 +36,10 @@ Exercices :
         Le but est de commencer a mettre en oeuvre des pattern de conception
 
         Mettre en oeuvre une chain de responsabilité pour gérer plusieurs validateurs a la suite les uns des autres
+
+    5 - Ajout d'un lecteur, d'un écrivain et gestion simple d'une file d'évènement
+        Le but est maintenant d'explorer l'architecture évènementielle. Nous allons donc créer un écrivain, qui s'activera lorsque le compte passe en négatif
+        et un lecteur qui recevra l'info, et l'appliquera un agios sans tomber dans une boucle infinie
+
+        PS : En supplément, nous pourrions créer un deuxième écrivain qui enverrait l'historique des opérations sur les comptes 
+        et un écrivain qui stockerai ça dans la BDD

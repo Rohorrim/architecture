@@ -3,10 +3,13 @@ package com.wgt.imt.architecture.business.comptes;
 import com.wgt.imt.architecture.business.common.exception.ConflictValidationException;
 import com.wgt.imt.architecture.business.common.exception.ConstraintValidationException;
 import com.wgt.imt.architecture.business.common.validators.ConstraintValidatorStep;
+import com.wgt.imt.architecture.business.comptes.annotations.MouvementCompteObserver;
 import com.wgt.imt.architecture.business.comptes.model.Compte;
+import com.wgt.imt.architecture.business.common.model.MouvementCompteType;
 import com.wgt.imt.architecture.business.comptes.validators.CompteAlreadyExistValidatorStep;
 import com.wgt.imt.architecture.business.comptes.validators.CompteTypeValidatorStep;
 import com.wgt.imt.architecture.infrastructures.bdd.clients.ClientsBddService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -19,6 +22,7 @@ import java.util.*;
  * @author Emmanuel WAGUET
  * @version 1.0
  */
+@Log4j2
 @Service
 public class ComptesServiceValidator extends ComptesService {
 
@@ -38,7 +42,13 @@ public class ComptesServiceValidator extends ComptesService {
      * @throws ConstraintValidationException si les contraintes ne sont pas respectées
      * @throws ConflictValidationException   si le compte existe déjà
      */
+    @MouvementCompteObserver(
+            message = "Création du compte",
+            type = MouvementCompteType.UTILISATEUR,
+            compteIdentifierExpression = "#p1.identifier"
+    )
     public Compte create(final UUID clientIdentifier, final Compte newCompte) {
+        log.info("Validation du nouveau compte avant création : {}", newCompte);
         new ConstraintValidatorStep<Compte>()
                 .linkWith(new CompteAlreadyExistValidatorStep(this.service, clientIdentifier))
                 .linkWith(new CompteTypeValidatorStep())
@@ -57,7 +67,13 @@ public class ComptesServiceValidator extends ComptesService {
      * @param updatedCompte le compte avec les informations mises à jour
      * @throws ConstraintValidationException si les contraintes ne sont pas respectées
      */
+    @MouvementCompteObserver(
+            message = "Mise à jour d'un compte",
+            type = MouvementCompteType.UTILISATEUR,
+            compteIdentifierExpression = "#p1.identifier"
+    )
     public void update(final UUID clientIdentifier, final Compte updatedCompte) {
+        log.info("Validation du compte avant mise à jour : {}", updatedCompte);
         new ConstraintValidatorStep<Compte>()
                 .linkWith(new CompteTypeValidatorStep())
                 .validate(updatedCompte)

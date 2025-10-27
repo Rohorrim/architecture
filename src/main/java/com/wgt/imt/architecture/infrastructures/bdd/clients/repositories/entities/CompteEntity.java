@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
+
 /**
  * Entité MongoDB représentant un compte bancaire.
  * Document embarqué dans ClientEntity (pas de collection séparée).
@@ -37,4 +39,9 @@ public class CompteEntity {
      * Solde du compte
      */
     private Double solde;
+    
+    /**
+     * Collection des mouvements de compte du client
+     */
+    private Collection<MouvementEntity> historique;
 }

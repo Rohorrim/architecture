@@ -7,6 +7,7 @@ import com.wgt.imt.architecture.business.common.exception.ConflictValidationExce
 import com.wgt.imt.architecture.business.common.exception.ConstraintValidationException;
 import com.wgt.imt.architecture.business.common.validators.ConstraintValidatorStep;
 import com.wgt.imt.architecture.infrastructures.bdd.clients.ClientsBddService;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 /**
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Service;
  * @author Emmanuel WAGUET
  * @version 1.0
  */
+@Log4j2
 @Service
 public class ClientsServiceValidator extends ClientsService {
     
@@ -42,6 +44,7 @@ public class ClientsServiceValidator extends ClientsService {
      * @throws ConflictValidationException   si le client existe déjà
      */
     public Client create(final Client newClient) {
+        log.info("Validation du nouveau client avant création : {}", newClient);
         new ConstraintValidatorStep<Client>()
                 .linkWith(new ClientAlreadyExistValidatorStep(this.service))
                 .linkWith(new ClientGenreValidatorStep())
@@ -61,6 +64,7 @@ public class ClientsServiceValidator extends ClientsService {
      * @throws ConstraintValidationException si les contraintes ne sont pas respectées
      */
     public void update(final Client updatedClient) {
+        log.info("Validation du client avant mise à jour : {}", updatedClient);
         new ConstraintValidatorStep<Client>()
                 .linkWith(new ClientGenreValidatorStep())
                 .validate(updatedClient)

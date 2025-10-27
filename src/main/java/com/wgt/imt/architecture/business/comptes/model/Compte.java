@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.*;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.UUID;
 
 /**
@@ -52,4 +54,7 @@ public class Compte {
      */
     @Builder.Default
     private final Double solde = 0D;
+    
+    @Builder.Default
+    private final Collection<Mouvement> historique = Collections.emptySet();
 }
