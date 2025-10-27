@@ -1,0 +1,921 @@
+{
+  "info": {
+    "_postman_id": "8dbe854d-d6b5-4d79-b688-6640f64d4175",
+    "name": "IMT",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Clients",
+      "item": [
+        {
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/imt/v1/clients",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "imt",
+                "v1",
+                "clients"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemple",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/imt/v1/clients",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "imt",
+                    "v1",
+                    "clients"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 05 Nov 2024 14:47:01 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"identifier\": \"1edc6cff-5a97-43f6-9716-8ec869a05f50\",\n        \"lastname\": \"Waguet\",\n        \"firstname\": \"Emmanuel\",\n        \"genre\": \"HOMME\"\n    },\n    {\n        \"identifier\": \"f05789f1-5476-4bed-a294-147978f4381c\",\n        \"lastname\": \"Dupont\",\n        \"firstname\": \"David\",\n        \"genre\": \"HOMME\"\n    },\n    {\n        \"identifier\": \"fb2ac96a-5b69-4f11-be90-7eef178eaa43\",\n        \"lastname\": \"Cuperlier\",\n        \"firstname\": \"Amandine\",\n        \"genre\": \"FEMME\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/imt/v1/clients/:idClient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "imt",
+                "v1",
+                "clients",
+                ":idClient"
+              ],
+              "variable": [
+                {
+                  "key": "idClient",
+                  "value": "1edc6cff-5a97-43f6-9716-8ec869a05f50"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemple",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/imt/v1/clients/:idClient",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "imt",
+                    "v1",
+                    "clients",
+                    ":idClient"
+                  ],
+                  "variable": [
+                    {
+                      "key": "idClient",
+                      "value": "1edc6cff-5a97-43f6-9716-8ec869a05f50"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 05 Nov 2024 14:47:18 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"identifier\": \"1edc6cff-5a97-43f6-9716-8ec869a05f50\",\n    \"lastname\": \"Waguet\",\n    \"firstname\": \"Emmanuel\",\n    \"genre\": \"HOMME\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"lastname\":\"Waguet\",\r\n    \"firstname\":\"Emmanuel\",\r\n    \"genre\":\"HOMME\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/imt/v1/clients",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "imt",
+                "v1",
+                "clients"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemple",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"lastname\":\"Waguet\",\r\n    \"firstname\":\"Emmanuel\",\r\n    \"genre\":\"HOMME\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/imt/v1/clients",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "imt",
+                    "v1",
+                    "clients"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 05 Nov 2024 14:46:17 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"identifier\": \"1edc6cff-5a97-43f6-9716-8ec869a05f50\",\n    \"lastname\": \"Waguet\",\n    \"firstname\": \"Emmanuel\",\n    \"genre\": \"HOMME\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"firstname\": \"Emmanuel\",\r\n    \"genre\": \"HOMME\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/imt/v1/clients/:idClient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "imt",
+                "v1",
+                "clients",
+                ":idClient"
+              ],
+              "variable": [
+                {
+                  "key": "idClient",
+                  "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemple",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"firstname\": \"Emmanuelle\",\r\n    \"genre\": \"FEMME\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/imt/v1/clients/:idClient",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "imt",
+                    "v1",
+                    "clients",
+                    ":idClient"
+                  ],
+                  "variable": [
+                    {
+                      "key": "idClient",
+                      "value": "1edc6cff-5a97-43f6-9716-8ec869a05f50"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 05 Nov 2024 14:49:03 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/imt/v1/clients/:idClient",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "imt",
+                "v1",
+                "clients",
+                ":idClient"
+              ],
+              "variable": [
+                {
+                  "key": "idClient",
+                  "value": "1edc6cff-5a97-43f6-9716-8ec869a05f50"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemple",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/imt/v1/clients/:idClient",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "imt",
+                    "v1",
+                    "clients",
+                    ":idClient"
+                  ],
+                  "variable": [
+                    {
+                      "key": "idClient",
+                      "value": "1edc6cff-5a97-43f6-9716-8ec869a05f50"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 05 Nov 2024 14:51:01 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Comptes",
+      "item": [
+        {
+          "name": "GetAll",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/imt/v1/clients/:idClient/comptes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "imt",
+                "v1",
+                "clients",
+                ":idClient",
+                "comptes"
+              ],
+              "variable": [
+                {
+                  "key": "idClient",
+                  "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemple",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/imt/v1/clients/:idClient/comptes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "imt",
+                    "v1",
+                    "clients",
+                    ":idClient",
+                    "comptes"
+                  ],
+                  "variable": [
+                    {
+                      "key": "idClient",
+                      "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 05 Nov 2024 14:55:57 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"identifier\": \"610921e1-43cf-474d-b88f-7659cc4c7373\",\n        \"name\": \"Compte courant\",\n        \"type\": \"COMPTE_COURANT\",\n        \"solde\": 0\n    },\n    {\n        \"identifier\": \"e48cec80-787d-4d31-bfa0-41fd0e9333f0\",\n        \"name\": \"Livret\",\n        \"type\": \"LIVRET_A\",\n        \"solde\": 0\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "GetOne",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/imt/v1/clients/:idClient/comptes/:idCompte",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "imt",
+                "v1",
+                "clients",
+                ":idClient",
+                "comptes",
+                ":idCompte"
+              ],
+              "variable": [
+                {
+                  "key": "idClient",
+                  "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                },
+                {
+                  "key": "idCompte",
+                  "value": "e48cec80-787d-4d31-bfa0-41fd0e9333f0"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemple",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/imt/v1/clients/:idClient/comptes/:idCompte",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "imt",
+                    "v1",
+                    "clients",
+                    ":idClient",
+                    "comptes",
+                    ":idCompte"
+                  ],
+                  "variable": [
+                    {
+                      "key": "idClient",
+                      "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                    },
+                    {
+                      "key": "idCompte",
+                      "value": "e48cec80-787d-4d31-bfa0-41fd0e9333f0"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 05 Nov 2024 14:56:32 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"identifier\": \"e48cec80-787d-4d31-bfa0-41fd0e9333f0\",\n    \"name\": \"Livret\",\n    \"type\": \"LIVRET_A\",\n    \"solde\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Compte_courant\",\r\n    \"type\": \"COMPTE_COURANT\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/imt/v1/clients/:idClient/comptes",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "imt",
+                "v1",
+                "clients",
+                ":idClient",
+                "comptes"
+              ],
+              "variable": [
+                {
+                  "key": "idClient",
+                  "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemple",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Compte courant\",\r\n    \"type\": \"COMPTE_COURANT\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/imt/v1/clients/:idClient/comptes",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "imt",
+                    "v1",
+                    "clients",
+                    ":idClient",
+                    "comptes"
+                  ],
+                  "variable": [
+                    {
+                      "key": "idClient",
+                      "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 05 Nov 2024 14:54:25 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"identifier\": \"610921e1-43cf-474d-b88f-7659cc4c7373\",\n    \"name\": \"Compte courant\",\n    \"type\": \"COMPTE_COURANT\",\n    \"solde\": 0\n}"
+            }
+          ]
+        },
+        {
+          "name": "Update",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"solde\": -10\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8080/api/imt/v1/clients/:idClient/comptes/:idCompte",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "imt",
+                "v1",
+                "clients",
+                ":idClient",
+                "comptes",
+                ":idCompte"
+              ],
+              "variable": [
+                {
+                  "key": "idClient",
+                  "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                },
+                {
+                  "key": "idCompte",
+                  "value": "03e65838-4fc0-4dec-9223-74b3f2b52b1b"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemple",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"solde\": -10\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "http://localhost:8080/api/imt/v1/clients/:idClient/comptes/:idCompte",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "imt",
+                    "v1",
+                    "clients",
+                    ":idClient",
+                    "comptes",
+                    ":idCompte"
+                  ],
+                  "variable": [
+                    {
+                      "key": "idClient",
+                      "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                    },
+                    {
+                      "key": "idCompte",
+                      "value": "e48cec80-787d-4d31-bfa0-41fd0e9333f0"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 05 Nov 2024 19:10:12 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        },
+        {
+          "name": "Delete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8080/api/imt/v1/clients/:idClient/comptes/:idCompte",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8080",
+              "path": [
+                "api",
+                "imt",
+                "v1",
+                "clients",
+                ":idClient",
+                "comptes",
+                ":idCompte"
+              ],
+              "variable": [
+                {
+                  "key": "idClient",
+                  "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                },
+                {
+                  "key": "idCompte",
+                  "value": "e48cec80-787d-4d31-bfa0-41fd0e9333f0"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Exemple",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "http://localhost:8080/api/imt/v1/clients/:idClient/comptes/:idCompte",
+                  "protocol": "http",
+                  "host": [
+                    "localhost"
+                  ],
+                  "port": "8080",
+                  "path": [
+                    "api",
+                    "imt",
+                    "v1",
+                    "clients",
+                    ":idClient",
+                    "comptes",
+                    ":idCompte"
+                  ],
+                  "variable": [
+                    {
+                      "key": "idClient",
+                      "value": "abf48d5b-3151-4a8e-b5bd-53ade1c8ecdf"
+                    },
+                    {
+                      "key": "idCompte",
+                      "value": "e48cec80-787d-4d31-bfa0-41fd0e9333f0"
+                    }
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "plain",
+              "header": [
+                {
+                  "key": "Date",
+                  "value": "Tue, 05 Nov 2024 19:10:51 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
