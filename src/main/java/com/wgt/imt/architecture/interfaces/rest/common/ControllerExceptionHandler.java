@@ -1,5 +1,7 @@
 package com.wgt.imt.architecture.interfaces.rest.common;
 
+import com.wgt.imt.architecture.business.common.exception.NotFoundValidationException;
+import com.wgt.imt.architecture.business.common.exception.ValidationException;
 import com.wgt.imt.architecture.interfaces.rest.common.model.output.ExceptionOutput;
 import jakarta.servlet.http.HttpServletRequest;
 import org.apache.logging.log4j.util.Strings;
@@ -15,12 +17,35 @@ import java.util.Optional;
 /**
  * Cet ExceptionHandler est utilisé pour gérer les exceptions dans les contrôleurs REST.
  *
- * Il intercepte les exceptions de type AbstractRestException et les exceptions génériques, puis renvoie une réponse HTTP appropriée avec des informations sur l'erreur.
+ * Il intercepte les exceptions de type ValidationException et les exceptions génériques, puis renvoie une réponse HTTP appropriée avec des informations sur l'erreur.
  * (On peut le considérer comme étant un mapper entre la couche business et la couche présentation spécifique REST)
  */
 @RestControllerAdvice
 public class ControllerExceptionHandler {
     private static final DateTimeFormatter FORMATTER = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+
+    /**
+     * Gère les exceptions de type ValidationException.
+     *
+     * @param request   la requête HTTP qui a déclenché l'exception
+     * @param exception l'exception levée
+     * @return une ResponseEntity contenant les détails de l'exception et le statut HTTP approprié
+     */
+    @ExceptionHandler(ValidationException.class)
+    public ResponseEntity<ExceptionOutput> handleBusinessException(final HttpServletRequest request, final ValidationException exception) {
+        return new ResponseEntity<>(
+                ExceptionOutput.builder()
+                               .type(exception.getClass().getSimpleName())
+                               .message(exception.getMessage())
+                               .timestamp(LocalDateTime.now().format(FORMATTER))
+                               .path(request.getRequestURI() + Optional.ofNullable(request.getQueryString()).map(query -> "?" + query).orElse(Strings.EMPTY))
+                               .build(),
+                switch(exception) {
+                    case NotFoundValidationException ignored -> HttpStatus.NOT_FOUND;
+                    default -> HttpStatus.BAD_REQUEST;
+                }
+        );
+    }
 
     /**
      * Gère les exceptions génériques.
