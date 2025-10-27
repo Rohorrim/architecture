@@ -1,6 +1,7 @@
 package com.wgt.imt.architecture.business.clients;
 
 import com.wgt.imt.architecture.business.clients.model.Client;
+import com.wgt.imt.architecture.infrastructures.bdd.clients.ClientsBddService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +10,10 @@ import java.util.*;
 @Service
 @AllArgsConstructor
 public class ClientsService {
-    final Map<UUID, Client> clients = new HashMap<>();
+    /**
+     * Service d'accès à la base de données pour les clients
+     */
+    private ClientsBddService service;
     
     /**
      * Récupère tous les clients.
@@ -17,7 +21,7 @@ public class ClientsService {
      * @return une collection de tous les clients, ou une collection vide si aucun client n'existe
      */
     public Collection<Client> getAll() {
-        return this.clients.values();
+        return Objects.requireNonNullElse(this.service.getAll(), Collections.emptySet());
     }
     
     /**
@@ -27,7 +31,7 @@ public class ClientsService {
      * @return un Optional contenant le client s'il existe, Optional.empty() sinon
      */
     public Optional<Client> getOne(final UUID identifier) {
-        return Optional.ofNullable(this.clients.get(identifier));
+        return this.service.get(identifier);
     }
     
     /**
@@ -37,8 +41,7 @@ public class ClientsService {
      * @return le client créé avec son identifiant généré
      */
     public Client create(final Client newClient) {
-        this.clients.put(newClient.getIdentifier(), newClient);
-        return newClient;
+        return this.service.save(newClient);
     }
     
     /**
@@ -47,7 +50,7 @@ public class ClientsService {
      * @param updatedClient le client avec les informations mises à jour
      */
     public void update(final Client updatedClient) {
-        this.clients.put(updatedClient.getIdentifier(), updatedClient);
+        this.service.save(updatedClient);
     }
     
     /**
@@ -56,6 +59,6 @@ public class ClientsService {
      * @param identifier l'identifiant unique du client à supprimer
      */
     public void delete(final UUID identifier) {
-        this.clients.remove(identifier);
+        this.service.delete(identifier);
     }
 }

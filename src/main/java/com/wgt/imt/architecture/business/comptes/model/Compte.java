@@ -30,12 +30,6 @@ public class Compte {
     private final UUID identifier = UUID.randomUUID();
     
     /**
-     * Identifiant du client propriétaire du compte
-     */
-    @Builder.Default
-    private final UUID clientIdentifier = UUID.randomUUID();
-    
-    /**
      * Nom du compte
      */
     private final String name;

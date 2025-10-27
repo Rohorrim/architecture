@@ -22,3 +22,11 @@ Exercices :
 
         N'ayant pas encore de BDD, on stockera les objets dans des List ou des Map, comme vous
         préférez, en attribut du controller
+
+    3 - Mise en oeuvre d'une BDD
+        Le but est de voir créer la troisième couche de notre architecture : la couche infrastructure. 
+        On va donc mettre en oeuvre une BDD H2 ou une mongoBD, et utiliser Spring Data JPA pour faire le lien entre la BDD et notre couche métier.
+
+        Il faut impacter notre code métier afin d'utiliser la BDD en question
+
+        PS : Pour lancer la mongo : mongo.exe --dbpath /c/Users/A388771/local/IMT/architecture/mongo
