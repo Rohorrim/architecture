@@ -1,5 +1,6 @@
 package com.wgt.imt.architecture.interfaces.rest.common;
 
+import com.wgt.imt.architecture.business.common.exception.ConflictValidationException;
 import com.wgt.imt.architecture.business.common.exception.NotFoundValidationException;
 import com.wgt.imt.architecture.business.common.exception.ValidationException;
 import com.wgt.imt.architecture.interfaces.rest.common.model.output.ExceptionOutput;
@@ -41,6 +42,7 @@ public class ControllerExceptionHandler {
                                .path(request.getRequestURI() + Optional.ofNullable(request.getQueryString()).map(query -> "?" + query).orElse(Strings.EMPTY))
                                .build(),
                 switch(exception) {
+                    case ConflictValidationException ignored -> HttpStatus.CONFLICT;
                     case NotFoundValidationException ignored -> HttpStatus.NOT_FOUND;
                     default -> HttpStatus.BAD_REQUEST;
                 }

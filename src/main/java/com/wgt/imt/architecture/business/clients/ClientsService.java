@@ -13,7 +13,7 @@ public class ClientsService {
     /**
      * Service d'accès à la base de données pour les clients
      */
-    private ClientsBddService service;
+    protected ClientsBddService service;
     
     /**
      * Récupère tous les clients.

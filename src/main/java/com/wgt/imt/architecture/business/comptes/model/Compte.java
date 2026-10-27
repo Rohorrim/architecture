@@ -22,21 +22,29 @@ import java.util.UUID;
 @EqualsAndHashCode
 @ToString
 public class Compte {
+    /**
+     * Pattern de validation pour le nom du compte : lettres, chiffres, underscore et tiret, entre 1 et 250 caractères
+     */
+    private static final String NAME_PATTERN = "^[a-z-A-Z1-9_-]{1,250}$";
     
     /**
      * Identifiant unique du compte, généré automatiquement
      */
     @Builder.Default
+    @NotNull(message = "L'identifiant ne peut pas être nul")
     private final UUID identifier = UUID.randomUUID();
     
     /**
      * Nom du compte
      */
+    @NotNull(message = "Le nom ne peut pas être nul")
+    @Pattern(regexp = NAME_PATTERN, message = "Le nom n'est pas valide : il doit être composé de lettre, de chiffre, d'underscore ou de tiré et doit faire entre 1 et 250 caractères")
     private final String name;
     
     /**
      * Type de compte (COMPTE_COURANT, LIVRET_A, LDDS)
      */
+    @NotNull(message = "Le type ne peut pas être nul")
     private final TypeCompteEnum type;
     
     /**

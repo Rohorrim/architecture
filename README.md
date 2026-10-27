@@ -30,3 +30,9 @@ Exercices :
         Il faut impacter notre code métier afin d'utiliser la BDD en question
 
         PS : Pour lancer la mongo : mongo.exe --dbpath /c/Users/A388771/local/IMT/architecture/mongo
+
+    4 - Mise en oeuvre des validateurs
+        Maintenant que notre application est complète, nous allons ajouter des validateurs pour s'assurer que les données envoyées par le client sont correctes
+        Le but est de commencer a mettre en oeuvre des pattern de conception
+
+        Mettre en oeuvre une chain de responsabilité pour gérer plusieurs validateurs a la suite les uns des autres

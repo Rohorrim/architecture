@@ -2,6 +2,7 @@ package com.wgt.imt.architecture.business.comptes;
 
 import com.wgt.imt.architecture.business.common.exception.NotFoundValidationException;
 import com.wgt.imt.architecture.business.clients.model.Client;
+import com.wgt.imt.architecture.business.common.exception.NotFoundValidationException;
 import com.wgt.imt.architecture.business.comptes.model.Compte;
 import com.wgt.imt.architecture.business.common.utils.CollectionImtUtils;
 import com.wgt.imt.architecture.infrastructures.bdd.clients.ClientsBddService;
@@ -24,7 +25,7 @@ public class ComptesService {
     /**
      * Service d'accès à la base de données pour les clients
      */
-    private final ClientsBddService service;
+    protected final ClientsBddService service;
     
     /**
      * Récupère tous les comptes associés à un client donné.

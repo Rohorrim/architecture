@@ -1,6 +1,6 @@
 package com.wgt.imt.architecture.interfaces.rest.clients;
 
-import com.wgt.imt.architecture.business.clients.ClientsService;
+import com.wgt.imt.architecture.business.clients.ClientsServiceValidator;
 import com.wgt.imt.architecture.business.clients.model.Client;
 import com.wgt.imt.architecture.business.common.exception.NotFoundValidationException;
 import com.wgt.imt.architecture.interfaces.rest.clients.model.input.ClientInput;
@@ -29,7 +29,7 @@ public class ClientsController {
     /**
      * Service de validation et gestion des clients
      */
-    private final ClientsService service;
+    private final ClientsServiceValidator service;
 
     
     /**
@@ -69,7 +69,7 @@ public class ClientsController {
      */
     @ResponseStatus(value = HttpStatus.OK)
     @GetMapping(value = "/{idClient}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ClientOutput getOne(@PathVariable("idClient") final String identifier) {
+    public ClientOutput getOne(@PathVariable("idClient") final String identifier) throws NotFoundValidationException {
         return this.service.getOne(UUID.fromString(identifier))
                 .map(ClientOutput::from)
                 .orElseThrow(() -> new NotFoundValidationException(String.format("Le client d'identifiant %s n'a pas été trouvé.", identifier)));
@@ -83,7 +83,7 @@ public class ClientsController {
      */
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     @PatchMapping(value = "/{idClient}", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public void update(@PathVariable("idClient") final String identifier, @RequestBody final ClientUpdateInput client) {
+    public void update(@PathVariable("idClient") final String identifier, @RequestBody final ClientUpdateInput client) throws NotFoundValidationException {
         this.service.update(
                 this.service.getOne(UUID.fromString(identifier))
                         .map(alreadySaved -> ClientUpdateInput.from(client, alreadySaved))
